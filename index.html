@@ -177,19 +177,8 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
        
 	   
 	   <h1>Saat Farkı Hesaplama</h1>
-        <form id="timeForm" onsubmit="return calculateTime(event)">
-            <div class="form-group">
-                <label for="startDate">Başlangıç Tarihi:</label>
-                <input type="datetime-local" id="startDate" name="startDate" required>
-            </div>
-            <div class="form-group">
-                <label for="endDate">Bitiş Tarihi:</label>
-                <input type="datetime-local" id="endDate" name="endDate" required>
-            </div>
-            <button id="button23" type="submit">Hesapla</button>
-        </form>
-
-        <div id="result" class="result"></div>
+  
+  <iframe src="saat.html" style="width: 100%; height: 500px; overflow: hidden; border: none;" scrolling="no"></iframe>
 		
 	   
     </div>
@@ -228,49 +217,6 @@ var Customify_JS = {"is_rtl":"","css_media_queries":{"all":"%s","desktop":"%s","
 /* ]]> */
 </script>
 <script type="text/javascript" src="wp-content/themes/customify/assets/js/theme.min.js?ver=0.4.5" id="customify-themejs-js"></script>
-<script>
-        function calculateTime(event) {
-            event.preventDefault(); // Formun varsayılan davranışını engelle
-
-            const startDateInput = document.getElementById('startDate').value;
-            const endDateInput = document.getElementById('endDate').value;
-
-            // Boşluk kontrolü ve tarihlerin geçerliliği
-            if (!startDateInput || !endDateInput) {
-                alert('Lütfen tüm alanları doldurun.');
-                return false;
-            }
-
-            const startDate = new Date(startDateInput);
-            const endDate = new Date(endDateInput);
-
-            if (endDate < startDate) {
-                alert('Bitiş tarihi başlangıç tarihinden önce olamaz.');
-                return false;
-            }
-
-            const diff = endDate - startDate; // Milisaniye cinsinden fark
-
-            const seconds = Math.floor(diff / 1000);
-            const minutes = Math.floor(seconds / 60);
-            const hours = Math.floor(minutes / 60);
-            const days = Math.floor(hours / 24);
-
-            const totalHours = hours;
-            const totalMinutes = minutes;
-            const totalSeconds = seconds;
-
-            const result = `
-                <p>Süre : ${days} gün ${hours % 24} saat ${minutes % 60} dakika</p>
-                <p>Saat : ${totalHours.toLocaleString('tr-TR')} saat</p>
-                <p>Dakika : ${totalMinutes.toLocaleString('tr-TR')} dakika</p>
-                <p>Saniye : ${totalSeconds.toLocaleString('tr-TR')} saniye</p>
-            `;
-
-            document.getElementById('result').innerHTML = result;
-            return false; // Formun sayfayı yeniden yüklemesini engelle
-        }
-    </script>
 
 
 </body>
